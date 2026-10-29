@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>AP2 太阳系 v2 - WebGL 2.0</title>
+<style>
+  body { margin:0; background:#000; overflow:hidden; font-family:sans-serif; }
+  #glcanvas { display:block; width:100vw; height:100vh; }
+  #panel { position:absolute; top:12px; left:12px; background:rgba(10,10,25,0.9);
+           border:1px solid #333; border-radius:8px; padding:12px 16px; width:250px;
+           font-size:12px; color:#ccc; line-height:1.7; }
+  #panel h3 { margin:0 0 6px; color:#fc6; font-size:14px; }
+  #status { position:absolute; bottom:12px; left:12px; background:rgba(10,10,25,0.9);
+            border:1px solid #333; border-radius:8px; padding:8px 14px; font-size:11px; color:#999; }
+  kbd { background:#222; border:1px solid #555; border-radius:3px; padding:1px 5px; color:#fc6; font-size:10px; }
+  .err { position:fixed; top:0; left:0; right:0; background:#c00; color:#fff; padding:10px;
+         z-index:9999; font:12px monospace; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<canvas id="glcanvas"></canvas>
+<div id="panel">
+  <h3>太阳系 v2</h3>
+  <div>公转速度 <input type="range" id="orbitSpeed" min="0" max="3" step="0.1" value="1" style="width:120px"> <span id="orbitSpeedVal">1x</span></div>
+  <div>自转速度 <input type="range" id="spinSpeed" min="0" max="3" step="0.1" value="1" style="width:120px"> <span id="spinSpeedVal">1x</span></div>
+  <div>轴倾角 <input type="range" id="axialTilt" min="0" max="45" step="0.5" value="23.5" style="width:120px"> <span id="axialTiltVal">23.5°</span></div>
+  <div><label><input type="checkbox" id="showOrbits" checked> 轨道线</label>
+       <label><input type="checkbox" id="showAsteroids" checked> 小行星带</label>
+       <label><input type="checkbox" id="showParticles" checked> 太阳粒子</label></div>
+</div>
+<div id="status">
+  <span id="projLabel">透视</span> | <span id="roamLabel">漫游中</span> | <span id="camMode">全景</span><br>
+  <kbd>O</kbd>投影 <kbd>空格</kbd>漫游 <kbd>1</kbd>全景 <kbd>2</kbd>日食 <kbd>3</kbd>月食 <kbd>A</kbd>对齐 | 拖拽=轨迹球 滚轮=缩放
+</div>
+<script src="mv.js"></script>
+<script src="solar.js"></script>
+</body>
+</html>
